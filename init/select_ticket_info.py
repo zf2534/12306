@@ -280,6 +280,9 @@ class select:
                 print(e.message)
             except TypeError as e:
                 print(u"12306接口无响应，正在重试 {0}".format(e.message))
+                random_time = round(random.uniform(0.2, 0.2), 2)
+                print(u"随机停留时长：{0}".format(random_time))
+                time.sleep(random_time)
             except socket.error as e:
                 print(e.message)
 

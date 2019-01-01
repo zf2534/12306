@@ -5,11 +5,11 @@ set:
   # - 2018-01-06
   # - 2018-01-07
   station_dates:
-    - "2018-12-29"
+    - "2019-01-30"
 
   # 是否根据时间范围 和 乘车类型 购票
   # 否则将需要手动填写车次
-  is_by_time: False
+  is_by_time: True
 
   # 列车类型: 高铁 G 动车 D 其它火车 O
   train_types: [G,D,O]
@@ -24,7 +24,7 @@ set:
 
   # 可接受最长旅途时间 格式ex：
   # take_time: "24:00"
-  take_time: "24:00"
+  take_time: "50:00"
 
   # 过滤车次(list)，格式ex：
   # - "G1353"
@@ -44,33 +44,34 @@ set:
 #    - "G6341"
 #    - "G1021"
 #    - "G99"
-    - "G6011"
+    #- "G6011"
 
   # 出发城市，比如深圳北，就填深圳就搜得到
-  from_station: "长沙"
+  from_station: "广州"
 
   # 到达城市 比如深圳北，就填深圳就搜得到
-  to_station: "深圳"
+  to_station: "达州"
 
   # 座位(list) 多个座位ex:
   # - "二等座"
   # - "一等座"
   set_type:
-  - "二等座"
+  - "硬卧"
+  - "软卧"
 
   # 当余票小于乘车人，如果选择优先提交，则删减联系人和余票数一致在提交
-  is_more_ticket: True
+  is_more_ticket: False
 
   # 乘车人(list) 多个乘车人ex:
   # - "张三"
   # - "李四"
   ticke_peoples:
-    - "文贤平"
-    - "梁敏"
+    - "朱万梅"
+    - "李阳琴"
   # 12306登录账号(list)
   12306account:
-    - user: "@qq.com"
-    - pwd: ""
+    - user: "zf25344"
+    - pwd: "my198603"
 
 # 加入小黑屋时间，此功能为了防止僵尸票导致一直下单不成功错过正常的票
 ticket_black_list_time: 5
@@ -83,8 +84,8 @@ auto_code_type: 2
 
 # 打码平台账号
 auto_code_account:
-  user: ""
-  pwd: ""
+  user: "zf2534"
+  pwd: "my198603"
 
 #  邮箱配置，如果抢票成功，将通过邮件配置通知给您
 #  列举163
@@ -111,7 +112,7 @@ email_conf:
 is_cdn: 2
 
 # 下单接口分为两种，1 为快速下单，2 是普通下单
-order_type: 1
+order_type: 2
 
 
 
