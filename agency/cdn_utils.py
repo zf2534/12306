@@ -51,13 +51,14 @@ class CDNProxy:
 
     def open_cdn_file(self):
         cdn = []
-        cdn_re = re.compile("CONNECT (\S+) HTTP/1.1")
-        with open("./cdn_list", "r") as f:
+        #cdn_re = re.compile("CONNECT (\S+) HTTP/1.1")
+        with open("./iprange.conf", "r") as f:
             for i in f.readlines():
                 # print(i.replace("\n", ""))
-                cdn_list = re.findall(cdn_re, i)
-                if cdn_list and "kyfw.12306.cn:443" not in cdn_list:
-                    cdn.append(cdn_list[0].split(":")[0])
+                #print(i)
+                if i:
+                    cdn.append(i)
+            print(cdn)
             return cdn
 
     def get_cdn_list(self):

@@ -137,7 +137,9 @@ class select:
             http._cdn = cdn[i].replace("\n", "")
             start_time = datetime.datetime.now()
             rep = http.send(urls)
-            if rep and "message" not in rep and (datetime.datetime.now() - start_time).microseconds / 1000 < 500:
+            delay_time = (datetime.datetime.now() - start_time).microseconds / 1000
+            if rep and "message" not in rep and delay_time < 150:
+                print("delay_time = {0}".format(delay_time))
                 if cdn[i].replace("\n", "") not in self.cdn_list:  # 如果有重复的cdn，则放弃加入
                     print("加入cdn {0}".format(cdn[i].replace("\n", "")))
                     self.cdn_list.append(cdn[i].replace("\n", ""))
@@ -172,6 +174,9 @@ class select:
         check_user.sendCheckUser()
         from_station, to_station = self.station_table(self.from_station, self.to_station)
         num = 0
+        begin_str = "2019-01-03 08:29:10.147000"
+        time_begin = datetime.datetime.strptime(begin_str, '%Y-%m-%d %H:%M:%S.%f')
+        de_flag = False
         while 1:
             try:
                 num += 1
@@ -243,7 +248,14 @@ class select:
                                                      self.ticke_peoples)
                             sor.sendSubmitOrderRequest()
                 else:
-                    random_time = round(random.uniform(0.5, 0.5), 2)
+                    time_now = datetime.datetime.now()
+                    #print((time_now - time_begin).seconds)
+                    de_flag = (time_now - time_begin).seconds > 10 and (time_now - time_begin).seconds < 100
+                    # print(str(time_now))
+                    if (de_flag == True):
+                        random_time = round(random.uniform(0.01, 0.01), 2)
+                    else:
+                        random_time = round(random.uniform(1, 2), 2)
                     print(u"正在第{0}次查询 随机停留时长：{6} 乘车日期: {1} 车次：{2} 查询无票 cdn轮询IP：{4}当前cdn总数：{5} 总耗时：{3}ms".format(num,
                                                                                                                 ",".join(
                                                                                                                     self.station_dates),
@@ -280,7 +292,15 @@ class select:
                 print(e.message)
             except TypeError as e:
                 print(u"12306接口无响应，正在重试 {0}".format(e.message))
-                random_time = round(random.uniform(0.2, 0.2), 2)
+                time_now = datetime.datetime.now()
+                # print((time_now - time_begin).seconds)
+                de_flag = (time_now - time_begin).seconds > 10 and (time_now - time_begin).seconds < 100
+                # print(str(time_now))
+                if (de_flag == True):
+                    random_time = round(random.uniform(0.01, 0.01), 2)
+                else:
+                    random_time = round(random.uniform(1, 2), 2)
+                #random_time = round(random.uniform(0.2, 0.2), 2)
                 print(u"随机停留时长：{0}".format(random_time))
                 time.sleep(random_time)
             except socket.error as e:
