@@ -9,7 +9,7 @@ set:
 
   # 是否根据时间范围 和 乘车类型 购票
   # 否则将需要手动填写车次
-  is_by_time: True
+  is_by_time: False
 
   # 列车类型: 高铁 G 动车 D 其它火车 O
   train_types: [G,D,O]
@@ -58,8 +58,8 @@ set:
   # - "一等座"
   set_type:
   #- "二等座"
-  - "软卧"
   - "硬卧"
+  - "软卧"
 
   # 当余票小于乘车人，如果选择优先提交，则删减联系人和余票数一致在提交
   is_more_ticket: False
