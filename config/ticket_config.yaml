@@ -5,7 +5,7 @@ set:
   # - 2018-01-06
   # - 2018-01-07
   station_dates:
-    - "2019-02-01"
+    - "2019-02-02"
 
   # 是否根据时间范围 和 乘车类型 购票
   # 否则将需要手动填写车次
@@ -46,7 +46,6 @@ set:
 #    - "G99"
     #- "G6011"
     - "T128"
-    - "K4706"
 
   # 出发城市，比如深圳北，就填深圳就搜得到
   from_station: "东莞"
@@ -104,11 +103,11 @@ auto_code_account:
 #  host: "smtp.qq.com"
 email_conf:
   is_email: True
-  email: "931128603@qq.com "
-  notice_email_list: "931128603@qq.com"
-  username: "931128603"
-  password: ""
-  host: "smtp.qq.com"
+  email: "17620443904@163.com "
+  notice_email_list: "472014002@qq.com"
+  username: "17620443904"
+  password: "my198603"
+  host: "smtp.163.com"
 
 # 是否开启cdn查询，可以更快的检测票票 1为开启，2为关闭
 is_cdn: 1
